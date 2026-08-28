@@ -243,7 +243,7 @@ function planCiz() {
 
   <div class="panel">
     <div class="plan-basi">
-      <h2>${kacis(p.baslik)}</h2>
+      <h2 class="serif">${kacis(p.baslik)}</h2>
       <p class="ozet">${kacis(p.ozet)}</p>
       <div class="etiketler">
         <span class="etiket">${kacis(b.sinif)}</span>
@@ -296,9 +296,9 @@ function planCiz() {
     <div class="blok">
       <h3>Farklılaştırma</h3>
       <div class="iki-sutun">
-        <div><div class="ad" style="font-size:13px;font-weight:700;color:var(--gri);margin-bottom:5px">Destek</div>
+        <div><div class="ad" style="font-size:13px;font-weight:700;color:var(--gri);margin-bottom:6px">Destek</div>
           <ul class="sade">${(p.farklilastirma?.destek || []).map((x) => `<li>${kacis(x)}</li>`).join("")}</ul></div>
-        <div><div class="ad" style="font-size:13px;font-weight:700;color:var(--gri);margin-bottom:5px">Zenginleştirme</div>
+        <div><div class="ad" style="font-size:13px;font-weight:700;color:var(--gri);margin-bottom:6px">Zenginleştirme</div>
           <ul class="sade">${(p.farklilastirma?.zenginlestirme || []).map((x) => `<li>${kacis(x)}</li>`).join("")}</ul></div>
       </div>
     </div>
@@ -542,8 +542,8 @@ function degerlendirmeCiz(s, metin) {
     <div class="puan-basi">
       <div class="halka">
         <svg width="86" height="86" viewBox="0 0 86 86">
-          <circle cx="43" cy="43" r="37" fill="none" stroke="#e8ece9" stroke-width="7"/>
-          <circle cx="43" cy="43" r="37" fill="none" stroke="#2f6d59" stroke-width="7"
+          <circle cx="43" cy="43" r="37" fill="none" stroke="#eee1ce" stroke-width="7"/>
+          <circle cx="43" cy="43" r="37" fill="none" stroke="#c05621" stroke-width="7"
             stroke-linecap="round" stroke-dasharray="${dolu} ${cevre}"/>
         </svg>
         <div class="sayi">${puan}</div>
