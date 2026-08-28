@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Madlen Öğretmen Atölyesi</title>
+<meta name="description" content="Planla, öğret, değerlendir. Tek ders bağlamı üç aracın içinden geçer." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=JetBrains+Mono:wght@400;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="ray">
+  <div class="ray-ic">
+    <div class="marka">
+      <b>Madlen</b><span>Öğretmen Atölyesi</span>
+    </div>
+
+    <nav class="asamalar" role="tablist" aria-label="Ders döngüsü">
+      <button class="asama" role="tab" aria-selected="true" data-arac="planla">
+        <span class="no">01</span>Planla
+      </button>
+      <span class="baglac"></span>
+      <button class="asama" role="tab" aria-selected="false" data-arac="ogret">
+        <span class="no">02</span>Öğret
+      </button>
+      <span class="baglac"></span>
+      <button class="asama" role="tab" aria-selected="false" data-arac="degerlendir">
+        <span class="no">03</span>Değerlendir
+      </button>
+    </nav>
+
+    <div id="baglamKutusu"></div>
+  </div>
+</header>
+
+<main class="sayfa">
+
+  <!-- ================= 01 PLANLA ================= -->
+  <section id="planla" class="arac">
+    <div class="ikili">
+      <div class="panel yapisik">
+        <div class="baslik-sat">
+          <h2>Ders planı</h2>
+          <p>Konu ve sınıf yaz, sınıfa götürebileceğin plan çıksın.</p>
+        </div>
+
+        <div class="alan">
+          <label for="pDers">Ders</label>
+          <select id="pDers"></select>
+        </div>
+
+        <div class="ikili-alan">
+          <div class="alan">
+            <label for="pSinif">Sınıf</label>
+            <select id="pSinif"></select>
+          </div>
+          <div class="alan">
+            <label for="pSure">Süre</label>
+            <select id="pSure">
+              <option value="40">40 dk</option>
+              <option value="80" selected>80 dk (2 ders)</option>
+              <option value="120">120 dk</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="alan">
+          <label for="pKonu">Konu</label>
+          <input type="text" id="pKonu" placeholder="örn. Basınç ve günlük hayattaki etkileri" />
+          <div class="ornekler" id="pOrnekler"></div>
+        </div>
+
+        <div class="alan">
+          <label for="pMufredat">Müfredat</label>
+          <select id="pMufredat">
+            <option value="MEB">MEB · Türkiye Yüzyılı Maarif Modeli</option>
+            <option value="UK">UK National Curriculum</option>
+            <option value="IGCSE">Cambridge IGCSE / A-Level</option>
+          </select>
+        </div>
+
+        <div class="alan">
+          <label for="pNot">Sınıfın hakkında not <span style="text-transform:none;font-weight:400">(isteğe bağlı)</span></label>
+          <textarea id="pNot" placeholder="örn. Sınıfta 3 kaynaştırma öğrencim var, deney malzemem sınırlı." style="min-height:70px"></textarea>
+        </div>
+
+        <button class="btn" id="pUret">Ders planı oluştur</button>
+        <p class="ipucu">Plan hazırlanması yaklaşık 15-25 saniye sürer.</p>
+      </div>
+
+      <div id="pCikti"></div>
+    </div>
+  </section>
+
+  <!-- ================= 02 ÖĞRET ================= -->
+  <section id="ogret" class="arac" hidden>
+    <div class="ikili">
+      <div class="panel yapisik">
+        <div class="baslik-sat">
+          <h2>Öğrenci asistanı</h2>
+          <p>Öğrenci soru sorar, cevabı değil yolu alır.</p>
+        </div>
+
+        <div class="alan">
+          <label for="sSinif">Öğrenci seviyesi</label>
+          <select id="sSinif"></select>
+        </div>
+
+        <div id="sBaglamNot"></div>
+
+        <div style="border-top:1px solid var(--tebesir); margin-top:16px; padding-top:14px">
+          <p style="font-size:13.5px; color:var(--gri); margin:0 0 8px"><b style="color:var(--murekkep)">Nasıl davranır</b></p>
+          <ul class="sade" style="font-size:14px; color:var(--gri)">
+            <li>Alıştırma sorusunda doğrudan cevap vermez, ipucu verir.</li>
+            <li>Üçüncü denemede çözümü gösterir, sonra benzer soru sorar.</li>
+            <li>Seçilen sınıf seviyesinin diliyle konuşur.</li>
+          </ul>
+        </div>
+
+        <button class="btn btn-ince" id="sTemizle" style="width:100%; margin-top:16px">Sohbeti temizle</button>
+      </div>
+
+      <div class="sohbet-kutu">
+        <div class="sohbet-basi" id="sBasi"></div>
+        <div class="akis" id="sAkis"></div>
+        <div class="hizli" id="sHizli"></div>
+        <div class="sohbet-girdi">
+          <input type="text" id="sGirdi" placeholder="Sorunu yaz…" autocomplete="off" />
+          <button class="btn" id="sGonder">Gönder</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 03 DEĞERLENDİR ================= -->
+  <section id="degerlendir" class="arac" hidden>
+    <div class="ikili">
+      <div class="panel yapisik">
+        <div class="baslik-sat">
+          <h2>Yazılı değerlendirme</h2>
+          <p>Öğrenci metnini yapıştır, ölçüte bağlı geri bildirim al.</p>
+        </div>
+
+        <div class="alan">
+          <label for="dSinif">Sınıf</label>
+          <select id="dSinif"></select>
+        </div>
+
+        <div id="dRubrikNot"></div>
+
+        <div class="alan">
+          <label for="dMetin">Öğrenci metni</label>
+          <textarea id="dMetin" placeholder="Öğrencinin yazdığı metni buraya yapıştırın…" style="min-height:220px"></textarea>
+          <p class="ipucu" id="dSayac">0 kelime</p>
+        </div>
+
+        <button class="btn" id="dDegerlendir">Değerlendir</button>
+        <button class="btn btn-ince" id="dOrnek" style="width:100%; margin-top:8px">Örnek metin doldur</button>
+      </div>
+
+      <div id="dCikti"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="dipnot">
+  <p>Madlen case study çalışması. Üç araç tek ders bağlamını paylaşır: planda üretilen öğrenme çıktıları asistanı sınırlar, yazma görevinin ölçütleri değerlendirmenin rubriğini oluşturur.</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
